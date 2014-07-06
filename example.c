@@ -52,7 +52,7 @@ void printhex(unsigned char *buf, size_t size)
 }
 
 
-void encrypt()
+void encrypt(void)
 {
 	int ret;
 	AES_GCM_CTX *ctx;
@@ -65,21 +65,21 @@ void encrypt()
 
 	ret = aes_gcm_init_encrypt(
 		ctx,
-		128, "abcd0123fooobaar",
-		16, "iviviviviviviviv");
+		128, (unsigned char *)"abcd0123fooobaar",
+		16, (unsigned char *)"iviviviviviviviv");
 	if (ret > 0) {
 		fprintf(stderr, "_init_encrypt failed with %d\n", ret);
 		return;
 	}
 
-	ret = aes_gcm_update_aad(ctx, 3, "foo");
+	ret = aes_gcm_update_aad(ctx, 3, (unsigned char *)"foo");
 	if (ret > 0) {
 		fprintf(stderr, "_update_aad failed with %d\n", ret);
 		return;
 	}
 
 	unsigned char out[5] = {0};
-	ret = aes_gcm_encrypt_update(ctx, 5, "hello", out);
+	ret = aes_gcm_encrypt_update(ctx, 5, (unsigned char *)"hello", out);
 	if (ret > 0) {
 		fprintf(stderr, "_encrypt_update failed with %d\n", ret);
 		return;
@@ -101,7 +101,7 @@ void encrypt()
 }
 
 
-void decrypt()
+void decrypt(void)
 {
 	unsigned char tag[AES_GCM_MAX_TAG_SIZE] = {
 		0x89, 0x58, 0xef, 0xbb, 0xaf, 0xc2, 0x2c, 0x96,
@@ -117,15 +117,15 @@ void decrypt()
 
 	ret = aes_gcm_init_decrypt(
 		ctx,
-		128, "abcd0123fooobaar",
-		16, "iviviviviviviviv",
+		128, (unsigned char *)"abcd0123fooobaar",
+		16, (unsigned char *)"iviviviviviviviv",
 		AES_GCM_MAX_TAG_SIZE, tag);
 	if (ret > 0) {
 		fprintf(stderr, "_init_decrypt failed with %d\n", ret);
 		return;
 	}
 
-	ret = aes_gcm_update_aad(ctx, 3, "foo");
+	ret = aes_gcm_update_aad(ctx, 3, (unsigned char *)"foo");
 	if (ret > 0) {
 		fprintf(stderr, "_update_aad failed with %d\n", ret);
 		return;
@@ -158,7 +158,7 @@ void decrypt()
 }
 
 
-int main()
+int main(int argc, char **argv)
 {
 	encrypt();
 	decrypt();

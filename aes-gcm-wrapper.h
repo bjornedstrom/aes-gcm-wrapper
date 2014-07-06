@@ -164,7 +164,7 @@ extern "C" {
  */
 typedef struct aes_gcm_ctx AES_GCM_CTX;
 
-AES_GCM_CTX* aes_gcm_create();
+AES_GCM_CTX* aes_gcm_create(void);
 
 int aes_gcm_destroy(AES_GCM_CTX *ctx);
 

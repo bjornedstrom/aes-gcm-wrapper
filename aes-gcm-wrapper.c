@@ -70,7 +70,7 @@ struct aes_gcm_ctx {
 };
 
 
-struct aes_gcm_ctx* aes_gcm_create()
+struct aes_gcm_ctx *aes_gcm_create(void)
 {
 	struct aes_gcm_ctx *ctx_outer = OPENSSL_malloc(sizeof(struct aes_gcm_ctx));
 
@@ -338,7 +338,7 @@ int aes_gcm_encrypt_finalize(
 
 	ctx->state = STATE_FINAL;
 
-	char dummy[16];
+	unsigned char dummy[16];
 	int outlen = 0;
 	if (EVP_EncryptFinal_ex(ctx->ctx, dummy, &outlen) == 0) {
 		return AES_GCM_ERR_ENCRYPT;
@@ -375,7 +375,7 @@ int aes_gcm_decrypt_finalize(
 	}
 #endif
 
-	char dummy[16];
+	unsigned char dummy[16];
 	int outlen = 0;
 	int rv = EVP_DecryptFinal_ex(ctx->ctx, dummy, &outlen);
 

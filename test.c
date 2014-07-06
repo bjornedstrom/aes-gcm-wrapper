@@ -201,7 +201,7 @@ void run_test_case(int vec_num, char *key, char *iv, char *hdr, char *ptx, char 
 
 	if (tag) {
 		int verified;
-		int ret = aes_gcm_decrypt_finalize(handle, &verified);
+		aes_gcm_decrypt_finalize(handle, &verified);
 
 		if (!verified) {
 			failure = 1;
@@ -230,7 +230,7 @@ void run_test_case(int vec_num, char *key, char *iv, char *hdr, char *ptx, char 
 /*
  * These test vectors are from IEEE P1619
  */
-void test_cases()
+void test_cases(void)
 {
 	// VEC 1
 	run_test_case(
@@ -378,7 +378,7 @@ void test_cases()
 }
 
 
-int main()
+int main(int argc, char **argv)
 {
 	test_cases();
 
