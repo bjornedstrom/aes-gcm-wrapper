@@ -21,7 +21,7 @@ When encrypting, it's valid to input:
 
 ## Usage
 
-Please see `aes-gcm-wrapper.h` for full documentation. Please see `example.c` for an example.
+Please see `aes-gcm-wrapper.h` for full documentation. Please see `example.c` for a full example.
 
 ### Encryption
 
@@ -56,7 +56,7 @@ Please see `aes-gcm-wrapper.h` for full documentation. Please see `example.c` fo
 
 aes-gcm-wrapper can be built as a shared library but it's more convenient to just copy it around when needed. The only dependency is linking against libcrypto (`gcc ... -lcrypto` for example). The OpenSSL development/header files are required as well.
 
-`aes-gcm-test.c` contains test vectors. This can be built by running `make`.
+`test.c` contains test vectors. This can be built by running `make`.
 
 ## Questions And Answers
 
