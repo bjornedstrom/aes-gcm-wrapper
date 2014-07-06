@@ -68,6 +68,11 @@ This wrapper is not thread safe at the moment. Calling encryption/decryption fun
 
 An alternative would be, for example, AES-CTR with HMAC-SHA1/SHA256, encrypt-then-mac. The author doesn't recommend using one over the other.
 
+### More information about AES-GCM?
+
+- NIST 800-38D.
+- IEEE P1619.
+
 ## Author
 
 aes-gcm-wrapper is written by Björn Edström in 2014.
