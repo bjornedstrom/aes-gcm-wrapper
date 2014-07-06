@@ -123,9 +123,9 @@ extern "C" {
  *   - aes_gcm_decrypt_update - OPTIONAL
  *   - aes_gcm_decrypt_finalize()
  *
- * These functions MUST be called in this order, if they are called at
- * all. Failure to call the functions in this order will result in the
- * AES_GCM_ERR_ORDERING return code.
+ * These functions MUST be called in the order below, if they are
+ * called at all. Failure to call the functions in this order will
+ * result in the AES_GCM_ERR_ORDERING return code.
  *
  *   1. aes_gcm_create()
  *   2. aes_gcm_init_encrypt() / aes_gcm_init_decrypt()
