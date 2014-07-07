@@ -78,6 +78,11 @@ struct aes_gcm_ctx *aes_gcm_create(void)
 		return NULL;
 
 	ctx_outer->ctx = NULL;
+	ctx_outer->type = -1;
+	ctx_outer->key_size_bits = -1;
+	ctx_outer->state = -1;
+	ctx_outer->tag_size = 0;
+	ctx_outer->tag = NULL;
 
 	return ctx_outer;
 }
