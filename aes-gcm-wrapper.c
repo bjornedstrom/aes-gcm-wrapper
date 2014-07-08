@@ -31,6 +31,10 @@
  * use in the OpenSSL Toolkit. (http://www.openssl.org/)"
  */
 
+/*
+ * aes-gcm-wrapper version 0.0.9 - July 6 2014
+ */
+
 #include <assert.h>
 #include <openssl/err.h>
 #include <openssl/evp.h>
