@@ -23,9 +23,11 @@ When encrypting, it's valid to input:
 
 Please see `aes-gcm-wrapper.h` for full documentation. Please see `example.c` for a full example.
 
+It is recommended to use an IV length of 96 bits, per Iwata-Ohashi-Minematsu.
+
 ### Encryption
 
-    unsigned char IV[16], KEY[16], out[5], tag[AES_GCM_MAX_TAG_SIZE];
+    unsigned char IV[12], KEY[16], out[5], tag[AES_GCM_MAX_TAG_SIZE];
     AES_GCM_CTX *ctx = aes_gcm_create();
     if (ctx == NULL)
         // handle error
@@ -38,7 +40,7 @@ Please see `aes-gcm-wrapper.h` for full documentation. Please see `example.c` fo
 
 ### Decryption
 
-    unsigned char IV[16], KEY[16], out[5], CIPHERTEXT[5], TAG[AES_GCM_MAX_TAG_SIZE];
+    unsigned char IV[12], KEY[16], out[5], CIPHERTEXT[5], TAG[AES_GCM_MAX_TAG_SIZE];
     int verified;
     AES_GCM_CTX *ctx = aes_gcm_create();
     if (ctx == NULL)

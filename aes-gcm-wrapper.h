@@ -157,6 +157,9 @@ extern "C" {
  * respectively. The functions assume that the size of the "key"
  * buffer is key_size_bits/8.
  *
+ * It is recommended that the "iv_size" is 96 bits, per
+ * Iwata-Ohashi-Minematsu.
+ *
  * When creating a decryption context, the GCM tag can optionally be
  * given at creation. If "tag" is NULL, it is up to the user of the
  * wrapper to call aes_gcm_set_tag() described below before doing any
